@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.2)
 
 if (CMAKE_COMPILER_IS_GNUCC)
    option(ENABLE_COVERAGE "Enable cover reporting for gcc/clang" FALSE)
