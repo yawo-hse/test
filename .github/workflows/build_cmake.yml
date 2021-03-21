@@ -213,7 +213,7 @@ jobs:
       matrix:
         config:
         - {
-            name: "Windows Latest MSVC", artifact: "Windows-MSVC.7z",
+            name: "Windows Latest MSVC", artifact: "Windows-MSVC1.7z",
             os: ubuntu-latest
           }
         - {
