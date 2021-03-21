@@ -33,7 +33,7 @@ jobs:
     - name: Convert coverage report
       uses: jandelgado/gcov2lcov-action@v1.0.5
       with:
-        working-directory: ${{github.workspace}}/build-cmake
+        workspace: ${{github.workspace}}/build-cmake
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
