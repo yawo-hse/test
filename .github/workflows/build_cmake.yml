@@ -20,6 +20,9 @@ jobs:
       uses: jwlawson/actions-setup-cmake@v1.8
       with:
         cmake-version: 3.18
+      
+    - name: install-lcov
+      run: apt-get install lcov
 
     - name: Build
       run: |
@@ -31,9 +34,11 @@ jobs:
       run: ctest -V -C $BUILD_TYPE
 
     - name: Convert coverage report
-      uses: jandelgado/gcov2lcov-action@v1.0.5
-      with:
-        workspace: ${{github.workspace}}/build-cmake
+      working-directory: ${{github.workspace}}/build-cmake
+      run: |
+        lcov --directory . --capture --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
+        lcov --list coverage.info
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
