@@ -5,6 +5,7 @@ if (CMAKE_COMPILER_IS_GNUCC)
    if(ENABLE_COVERAGE)
        add_compile_options(--coverage -00)
    endif()
+endif()
    
 
 add_executable(intro main.cpp)
