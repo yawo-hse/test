@@ -30,7 +30,7 @@ jobs:
         cmake --build build-cmake --config $BUILD_TYPE
 
     - name: Force starting main.cpp with coverage
-      run: g++ main.cpp --coverage
+      run: ./build-cmake/main
 
     - name: Tests
       working-directory: ${{github.workspace}}/build-cmake
