@@ -1,6 +1,12 @@
 name: CMake Build Matrix
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: [ original ]
+  pull_request:
+    branches: [ original ]
+
+  workflow_dispatch:
 
 env:
   CMAKE_VERSION: 3.18.3
