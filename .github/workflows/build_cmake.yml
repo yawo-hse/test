@@ -2,9 +2,9 @@ name: CMake Build Matrix
 
 on:
   push:
-    branches: [ original ]
+    branches: [ origin ]
   pull_request:
-    branches: [ original ]
+    branches: [ origin ]
 
   workflow_dispatch:
 
