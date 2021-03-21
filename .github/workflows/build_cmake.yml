@@ -1,6 +1,8 @@
 name: CMake Build Matrix
 
 on: [push, pull_request]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 env:
   CMAKE_VERSION: 3.18.3
