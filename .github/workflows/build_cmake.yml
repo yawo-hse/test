@@ -29,16 +29,20 @@ jobs:
         cmake -S . -B build-cmake
         cmake --build build-cmake --config $BUILD_TYPE
 
+    - name: Force starting main.cpp with coverage
+      working-directory: ${{github.workspace}}/build-cmake
+      run: ./main
+
     - name: Tests
       working-directory: ${{github.workspace}}/build-cmake
       run: ctest -V -C $BUILD_TYPE
 
-    - name: Convert coverage report
-      working-directory: ${{github.workspace}}/build-cmake
-      run: |
-        lcov --directory . --capture --output-file coverage.info
-        lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
-        lcov --list coverage.info
+    #- name: Convert coverage report
+    #  working-directory: ${{github.workspace}}/build-cmake
+    #  run: |
+    #    lcov --directory . --capture --output-file coverage.info
+    #    lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
+    #    lcov --list coverage.info
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
