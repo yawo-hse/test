@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.16)
 
-if (CMAKE_COMPILER_IS_GNUCC)
-   option(ENABLE_COVERAGE "Enable cover reporting for gcc/clang" TRUE)
-   if(ENABLE_COVERAGE)
-       add_compile_options(--coverage -O0 -g)
-   endif()
-endif()
-
 project(main)
 
 add_executable(main main.cpp)
+target_compile_options(main PRIVATE -fprofile-arcs -ftest-coverage)
+target_link_options(main PRIVATE --coverage)
 
 install(TARGETS main)
 
