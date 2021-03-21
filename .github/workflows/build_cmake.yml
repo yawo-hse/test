@@ -30,9 +30,8 @@ jobs:
       working-directory: ${{github.workspace}}/build-cmake
       run: ctest -V -C $BUILD_TYPE
 
-    - name: Codecov
-      working-directory: ${{github.workspace}}/build-cmake
-      run: bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-${GCC_VER}
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
     
   release:
     if: contains(github.ref, 'tags/v')
