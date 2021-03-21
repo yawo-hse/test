@@ -29,7 +29,7 @@ jobs:
         cmake -S . -B build-cmake
         cmake --build build-cmake --config $BUILD_TYPE
 
-    - name: Test
+    - name: Tests
       working-directory: ${{github.workspace}}/build-cmake
       run: ctest -V -C $BUILD_TYPE
 
