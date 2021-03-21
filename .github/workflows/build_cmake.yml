@@ -30,8 +30,15 @@ jobs:
       working-directory: ${{github.workspace}}/build-cmake
       run: ctest -V -C $BUILD_TYPE
 
+    - name: Convert coverage report
+      uses: jandelgado/gcov2lcov-action@v1.0.5
+      with:
+        working-directory: ${{github.workspace}}/build-cmake
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
+      with:
+        working-directory: ${{github.workspace}}/build-cmake
     
   release:
     if: contains(github.ref, 'tags/v')
