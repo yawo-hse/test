@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 if (CMAKE_COMPILER_IS_GNUCC)
    option(ENABLE_COVERAGE "Enable cover reporting for gcc/clang" TRUE)
    if(ENABLE_COVERAGE)
-       add_compile_options(--coverage -O0)
+       add_compile_options(--coverage -O0 -g)
    endif()
 endif()
 
