@@ -29,6 +29,9 @@ jobs:
         cmake -S . -B build-cmake
         cmake --build build-cmake --config $BUILD_TYPE
 
+    - name: Force starting main.cpp with coverage
+      run: g++ main.cpp --coverage
+
     - name: Tests
       working-directory: ${{github.workspace}}/build-cmake
       run: ctest -V -C $BUILD_TYPE
